@@ -40,7 +40,7 @@ public class PageDetail extends AppCompatActivity {
 
 
 
-        long id = getIntent().getLongExtra("index", 0);
+        long id =  getIntent().getLongExtra("index", 0);
         mApiService = DI.getNeighbourApiService();
 
        neighbour = mApiService.getNeighbour(id);
