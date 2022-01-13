@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
+import com.openclassrooms.entrevoisins.events.ShowDetailEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import org.greenrobot.eventbus.EventBus;
@@ -64,10 +65,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext,PageDetail.class);
-
-                intent.putExtra("index",neighbour.getId());
-                mContext.startActivity(intent);
+               EventBus.getDefault().post(new ShowDetailEvent(neighbour));
             }
         });
 

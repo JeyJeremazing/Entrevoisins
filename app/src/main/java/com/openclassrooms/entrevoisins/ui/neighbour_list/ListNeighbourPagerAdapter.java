@@ -19,9 +19,9 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0){
-            return NeighbourFragment.newInstance();
+            return NeighbourFragment.newInstance(false);
         }else {
-            return NeighbourFavouriteFragment.newInstance();
+            return NeighbourFragment.newInstance(true);
         }
 
 

@@ -1,6 +1,7 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
+import com.openclassrooms.entrevoisins.events.ShowDetailEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
@@ -23,6 +25,7 @@ import java.util.List;
 
 
 public class NeighbourFragment extends Fragment {
+    private boolean isFavourite;
 
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
@@ -33,8 +36,9 @@ public class NeighbourFragment extends Fragment {
      * Create and return a new instance
      * @return @{@link NeighbourFragment}
      */
-    public static NeighbourFragment newInstance() {
+    public static NeighbourFragment newInstance(boolean isFavourite) {
         NeighbourFragment fragment = new NeighbourFragment();
+        fragment.isFavourite = isFavourite;
         return fragment;
     }
 
@@ -59,7 +63,11 @@ public class NeighbourFragment extends Fragment {
      * Init the List of neighbours
      */
     private void initList() {
-        mNeighbours = mApiService.getNeighbours();
+        if (isFavourite){
+            mNeighbours = mApiService.getFavouriteNeighbour();
+        } else {
+            mNeighbours = mApiService.getNeighbours();
+        }
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours,getActivity()));
     }
 
@@ -89,5 +97,12 @@ public class NeighbourFragment extends Fragment {
     public void onDeleteNeighbour(DeleteNeighbourEvent event) {
         mApiService.deleteNeighbour(event.neighbour);
         initList();
+    }
+    @Subscribe
+    public void showDetailNeighbour(ShowDetailEvent event) {
+        Intent intent = new Intent(getContext(),PageDetail.class);
+
+        intent.putExtra("index",event.neighbour.getId());
+        startActivity(intent);
     }
 }

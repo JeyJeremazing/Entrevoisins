@@ -41,7 +41,7 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
     @Override
     public Neighbour getNeighbour(long id) {
         for (Neighbour neighbour : neighbours ){
-                if (neighbour.getId()==id){
+                if (neighbour.getId()== id){
                     return neighbour;
                 }
         }
