@@ -35,7 +35,7 @@ public class AddNeighbourActivity extends AppCompatActivity {
     TextInputLayout addressInput;
     @BindView(R.id.aboutMeLyt)
     TextInputLayout aboutMeInput;
-    @BindView(R.id.create)
+    @BindView(R.id.save)
     MaterialButton addButton;
 
     private NeighbourApiService mApiService;
@@ -79,7 +79,7 @@ public class AddNeighbourActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.create)
+    @OnClick(R.id.save)
     void addNeighbour() {
         Neighbour neighbour = new Neighbour(
                 System.currentTimeMillis(),

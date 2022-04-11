@@ -1,7 +1,6 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 
-import android.support.test.espresso.DataInteraction;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -10,11 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
-import static android.support.test.InstrumentationRegistry.getInstrumentation;
-import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
-import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static android.support.test.espresso.action.ViewActions.*;
 import static android.support.test.espresso.assertion.ViewAssertions.*;
 import static android.support.test.espresso.matcher.ViewMatchers.*;
@@ -42,7 +38,7 @@ public class ListNeighbourActivityTest {
     public ActivityTestRule<ListNeighbourActivity> mActivityTestRule = new ActivityTestRule<>(ListNeighbourActivity.class);
 
     @Test
-    public void VerifAffichageChampsTest() {
+    public void addNeighbourDisplayingTest() {
         ViewInteraction floatingActionButton = onView(
                 allOf(withId(R.id.add_neighbour),
                         childAtPosition(
@@ -59,7 +55,7 @@ public class ListNeighbourActivityTest {
 
         ViewInteraction editText3 = onView(
                 allOf(withId(R.id.name),
-                        withParent(withParent(withId(R.id.nameLyt))),
+                        withParent(withId(R.id.nameLyt)),
                         isDisplayed()));
         editText3.check(matches(withText("")));
 
@@ -77,13 +73,13 @@ public class ListNeighbourActivityTest {
 
         ViewInteraction editText6 = onView(
                 allOf(withId(R.id.aboutMeView),
-                        withParent(withParent(withId(R.id.aboutMeLyt))),
+                      withParent(withId(R.id.aboutMeLyt)),
                         isDisplayed()));
         editText6.check(matches(withText("")));
 
         ViewInteraction button = onView(
-                allOf(withId(R.id.create),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
+                allOf(withId(R.id.save),
+                        withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class)),
                         isDisplayed()));
         button.check(matches(not(isEnabled())));
 
