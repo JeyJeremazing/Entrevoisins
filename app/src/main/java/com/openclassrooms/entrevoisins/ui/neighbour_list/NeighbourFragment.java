@@ -64,8 +64,10 @@ public class NeighbourFragment extends Fragment {
      */
     private void initList() {
         if (isFavourite){
+            mRecyclerView.setContentDescription("listOfFavourites");
             mNeighbours = mApiService.getFavouriteNeighbour();
         } else {
+            mRecyclerView.setContentDescription("listOfNeighbours");
             mNeighbours = mApiService.getNeighbours();
         }
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours,getActivity()));
