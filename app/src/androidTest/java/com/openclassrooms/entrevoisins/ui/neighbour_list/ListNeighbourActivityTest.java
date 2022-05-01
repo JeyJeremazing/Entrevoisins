@@ -68,7 +68,7 @@ public class ListNeighbourActivityTest {
 
     }
 
-    //Le test ci-dessOus n'est pas valide.
+
     @Test
     public void clickForLaunchTheDetailScreen(){
         onView(withContentDescription("listOfNeighbours")).perform(actionOnItemAtPosition( 0, click()));
@@ -83,6 +83,24 @@ public class ListNeighbourActivityTest {
         onView(withContentDescription("listOfNeighbours")).perform(actionOnItemAtPosition( 0, click()));
 
         onView(withId(R.id.nameText)).check(matches(withText("Caroline")));
+
+    }
+
+    @Test
+    public void favouriteIsDisplayed(){
+
+        onView(withContentDescription("listOfNeighbours")).perform(actionOnItemAtPosition( 0, click()));
+
+        onView(ViewMatchers.withId(R.id.pageDetail)).check(matches(isDisplayed()));
+
+        onView(withId(R.id.floatingActionButton)).perform(click());
+
+        pressBack();
+
+        onView(withContentDescription("listOfFavourites"));
+
+        onView(withId(R.id.nameText)).check(matches(withText("Caroline")));
+
 
     }
 
