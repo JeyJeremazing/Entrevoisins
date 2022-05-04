@@ -6,11 +6,12 @@ Cette application est la propriété de la startup Entrevoisin.
 ## But de l'Application:
 
 Cette application a été développer dans le but de permettre aux utilisateurs d'échanger des biens et services.
-Les rencontres sont aussi mise en avant.
+Les rencontres sont aussi mises en avant.
 
 Technologies et IDE utilisés:
 
 Language : Java
+
 IDE : Android Studio
 
 # Comment exécuter le Projet
