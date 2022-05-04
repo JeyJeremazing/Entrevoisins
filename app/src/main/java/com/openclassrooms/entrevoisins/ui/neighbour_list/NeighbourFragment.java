@@ -3,6 +3,7 @@ package com.openclassrooms.entrevoisins.ui.neighbour_list;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -102,9 +103,9 @@ public class NeighbourFragment extends Fragment {
     }
     @Subscribe
     public void showDetailNeighbour(ShowDetailEvent event) {
-        Intent intent = new Intent(getContext(),PageDetail.class);
+        Intent intent = new Intent(getContext(), PageDetailActivity.class);
 
         intent.putExtra("index",event.neighbour.getId());
-        startActivity(intent);
+        ActivityCompat.startActivity(requireActivity(),intent,null);
     }
 }

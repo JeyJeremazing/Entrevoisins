@@ -4,19 +4,17 @@ package com.openclassrooms.entrevoisins.ui.neighbour_list;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.swipeLeft;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-
+import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.CoreMatchers.allOf;
-import static org.hamcrest.CoreMatchers.not;
 
-import android.support.test.espresso.ViewAction;
+import android.support.test.espresso.Espresso;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.filters.LargeTest;
@@ -31,7 +29,6 @@ import com.openclassrooms.entrevoisins.R;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,6 +36,8 @@ import org.junit.runner.RunWith;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class ListNeighbourActivityTest {
+
+
 
     @Rule
     public ActivityTestRule<ListNeighbourActivity> mActivityTestRule = new ActivityTestRule<>(ListNeighbourActivity.class);
@@ -97,9 +96,14 @@ public class ListNeighbourActivityTest {
 
         pressBack();
 
-        onView(withContentDescription("listOfFavourites"));
+        onView(withId(R.id.container)).perform(swipeLeft());
 
-        onView(withId(R.id.nameText)).check(matches(withText("Caroline")));
+
+        onView(withContentDescription("listOfFavourites")).check(withItemCount(1));
+
+        onView(withContentDescription("listOfFavourites")).perform(actionOnItemAtPosition( 0, click()));
+
+        onView(ViewMatchers.withId(R.id.nameText)).check(matches(withText("Caroline")));
 
 
     }

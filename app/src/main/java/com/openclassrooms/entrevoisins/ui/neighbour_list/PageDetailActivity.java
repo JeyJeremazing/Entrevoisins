@@ -14,7 +14,7 @@ import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
-public class PageDetail extends AppCompatActivity {
+public class PageDetailActivity extends AppCompatActivity {
     private NeighbourApiService mApiService;
     private Neighbour neighbour;
 
