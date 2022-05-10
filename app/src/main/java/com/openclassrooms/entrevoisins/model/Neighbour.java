@@ -42,7 +42,6 @@ public class Neighbour {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.aboutMe = aboutMe;
-
     }
 
     public long getId() {
@@ -89,6 +88,11 @@ public class Neighbour {
         return aboutMe;
     }
 
+    public String getWebSite() {
+
+        return "www.facebook.com/"+name;
+    }
+
     public void setAboutMe(String aboutMe) {
         this.aboutMe = aboutMe;
     }
@@ -96,6 +100,8 @@ public class Neighbour {
     public boolean isFavourite() { return favourite;}
 
     public void setFavourite(boolean favourite) { this.favourite = favourite;}
+
+
 
     @Override
     public boolean equals(Object o) {

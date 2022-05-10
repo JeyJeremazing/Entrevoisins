@@ -6,7 +6,7 @@
     <string name="a_propos_de_moi">A propos de moi</string>
     <string name="pr_nom">Prénom</string>
     <string name="adress">Adress</string>
-    <string name="phone_number">phone number</string>
+    <string name="web_site">phone number</string>
     <string name="neighbour_avatar">neighbour_avatar</string>
     <string name="website">webSite</string>
 </resources>

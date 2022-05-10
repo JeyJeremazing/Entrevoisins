@@ -15,8 +15,11 @@ import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
 public class PageDetailActivity extends AppCompatActivity {
+
     private NeighbourApiService mApiService;
     private Neighbour neighbour;
+
+    public static String NEIGHBOUR_ID = "neighbour_id" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +41,13 @@ public class PageDetailActivity extends AppCompatActivity {
     private void displayData() {
         ImageView userAvatar = findViewById(R.id.avatarImageView);
         TextView userName = findViewById(R.id.nameText);
+        TextView webSite = findViewById(R.id.webSiteText);
         TextView userAddress = findViewById(R.id.addressText);
         TextView userPhone = findViewById(R.id.phoneNumberText);
         TextView aboutMe = findViewById(R.id.aboutMeView);
 
-        long id = getIntent().getLongExtra("index", 0);
+        long id = getIntent().getLongExtra(NEIGHBOUR_ID, 0);
+
         mApiService = DI.getNeighbourApiService();
         neighbour = mApiService.getNeighbour(id);
 
@@ -50,6 +55,7 @@ public class PageDetailActivity extends AppCompatActivity {
         userAddress.setText(neighbour.getAddress());
         userPhone.setText(neighbour.getPhoneNumber());
         aboutMe.setText(neighbour.getAboutMe());
+        webSite.setText(neighbour.getWebSite());
         setButtonState(neighbour);
 
         Glide.with(this).load(neighbour.getAvatarUrl())
@@ -68,6 +74,6 @@ public class PageDetailActivity extends AppCompatActivity {
 
     private void setButtonState(Neighbour neighbour) {
         ImageView buttonOn = findViewById(R.id.floatingActionButton);
-        buttonOn.setImageResource(neighbour.isFavourite() ? R.drawable.ic_star_white_24dp : R.drawable.ic_star_border_white_24dp);
+        buttonOn.setImageResource(neighbour.isFavourite() ? android.R.drawable.btn_star_big_on : android.R.drawable.btn_star_big_off);
     }
 }

@@ -101,11 +101,4 @@ public class NeighbourFragment extends Fragment {
         mApiService.deleteNeighbour(event.neighbour);
         initList();
     }
-    @Subscribe
-    public void showDetailNeighbour(ShowDetailEvent event) {
-        Intent intent = new Intent(getContext(), PageDetailActivity.class);
-
-        intent.putExtra("index",event.neighbour.getId());
-        ActivityCompat.startActivity(requireActivity(),intent,null);
-    }
 }
