@@ -78,7 +78,7 @@ public class ListNeighbourActivityTest {
     public void userNameFilling() {
         onView(withContentDescription("listOfNeighbours")).perform(actionOnItemAtPosition(0, click()));
 
-        onView(withId(R.id.nameText)).check(matches(withText("Caroline")));
+        onView(allOf(withId(R.id.nameText), withText("Caroline!")));
 
     }
 
@@ -100,7 +100,9 @@ public class ListNeighbourActivityTest {
 
         onView(withContentDescription("listOfFavourites")).perform(actionOnItemAtPosition(0, click()));
 
-        onView(ViewMatchers.withId(R.id.nameText)).check(matches(withText("Caroline")));
+        onView(allOf(withId(R.id.item_list_name), withText("Caroline!")));
+
+        // onView(withId(R.id.nameText)).check(matches(withText("Caroline")));
 
 
     }
