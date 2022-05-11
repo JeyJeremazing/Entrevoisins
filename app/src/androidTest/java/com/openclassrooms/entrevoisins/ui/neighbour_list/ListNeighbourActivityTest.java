@@ -14,7 +14,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.CoreMatchers.allOf;
 
-import android.support.test.espresso.Espresso;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.filters.LargeTest;
@@ -36,7 +35,6 @@ import org.junit.runner.RunWith;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class ListNeighbourActivityTest {
-
 
 
     @Rule
@@ -69,26 +67,25 @@ public class ListNeighbourActivityTest {
 
 
     @Test
-    public void clickForLaunchTheDetailScreen(){
-        onView(withContentDescription("listOfNeighbours")).perform(actionOnItemAtPosition( 0, click()));
+    public void clickForLaunchTheDetailScreen() {
+        onView(withContentDescription("listOfNeighbours")).perform(actionOnItemAtPosition(0, click()));
 
         onView(ViewMatchers.withId(R.id.pageDetail)).check(matches(isDisplayed()));
     }
 
 
-
-  @Test
-    public void userNameFilling (){
-        onView(withContentDescription("listOfNeighbours")).perform(actionOnItemAtPosition( 0, click()));
+    @Test
+    public void userNameFilling() {
+        onView(withContentDescription("listOfNeighbours")).perform(actionOnItemAtPosition(0, click()));
 
         onView(withId(R.id.nameText)).check(matches(withText("Caroline")));
 
     }
 
     @Test
-    public void favouriteIsDisplayed(){
+    public void favouriteIsDisplayed() {
 
-        onView(withContentDescription("listOfNeighbours")).perform(actionOnItemAtPosition( 0, click()));
+        onView(withContentDescription("listOfNeighbours")).perform(actionOnItemAtPosition(0, click()));
 
         onView(ViewMatchers.withId(R.id.pageDetail)).check(matches(isDisplayed()));
 
@@ -101,7 +98,7 @@ public class ListNeighbourActivityTest {
 
         onView(withContentDescription("listOfFavourites")).check(withItemCount(1));
 
-        onView(withContentDescription("listOfFavourites")).perform(actionOnItemAtPosition( 0, click()));
+        onView(withContentDescription("listOfFavourites")).perform(actionOnItemAtPosition(0, click()));
 
         onView(ViewMatchers.withId(R.id.nameText)).check(matches(withText("Caroline")));
 
