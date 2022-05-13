@@ -40,31 +40,6 @@ public class ListNeighbourActivityTest {
     @Rule
     public ActivityTestRule<ListNeighbourActivity> mActivityTestRule = new ActivityTestRule<>(ListNeighbourActivity.class);
 
-    @Test
-    public void listNeighbourActivityTest2() {
-        ViewInteraction appCompatImageButton = onView(
-                allOf(withId(R.id.item_list_delete_button),
-                        childAtPosition(
-                                allOf(withId(R.id.constraint),
-                                        childAtPosition(
-                                                withId(R.id.list_neighbours),
-                                                0)),
-                                2),
-                        isDisplayed()));
-        appCompatImageButton.perform(click());
-        ViewInteraction name = onView(
-                allOf(withId(R.id.item_list_name),
-                        childAtPosition(
-                                allOf(withId(R.id.constraint),
-                                        childAtPosition(
-                                                withId(R.id.list_neighbours),
-                                                0)),
-                                1),
-                        isDisplayed()));
-        name.check(matches(withText("Jack")));
-
-    }
-
 
     @Test
     public void clickForLaunchTheDetailScreen() {
@@ -78,7 +53,8 @@ public class ListNeighbourActivityTest {
     public void userNameFilling() {
         onView(withContentDescription("listOfNeighbours")).perform(actionOnItemAtPosition(0, click()));
 
-        onView(allOf(withId(R.id.nameText), withText("Caroline!")));
+        onView(withId(R.id.nameText)).check(matches(withText("Caroline")));
+
 
     }
 
@@ -100,9 +76,9 @@ public class ListNeighbourActivityTest {
 
         onView(withContentDescription("listOfFavourites")).perform(actionOnItemAtPosition(0, click()));
 
-        onView(allOf(withId(R.id.item_list_name), withText("Caroline!")));
+       // onView(allOf(withId(R.id.item_list_name), withText("Caroline!")));
 
-        // onView(withId(R.id.nameText)).check(matches(withText("Caroline")));
+        onView(withId(R.id.nameText)).check(matches(withText("Caroline")));
 
 
     }
