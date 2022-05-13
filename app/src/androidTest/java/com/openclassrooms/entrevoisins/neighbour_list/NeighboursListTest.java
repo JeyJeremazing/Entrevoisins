@@ -83,14 +83,11 @@ public class NeighboursListTest {
         onView(ViewMatchers.withId(R.id.pageDetail)).check(matches(isDisplayed()));
     }
 
-
     @Test
     public void userNameFilling() {
         onView(withContentDescription("listOfNeighbours")).perform(actionOnItemAtPosition(0, click()));
 
         onView(withId(R.id.nameText)).check(matches(withText("Caroline")));
-
-
     }
 
     @Test
@@ -106,15 +103,12 @@ public class NeighboursListTest {
 
         onView(withId(R.id.container)).perform(swipeLeft());
 
-
         onView(withContentDescription("listOfFavourites")).check(withItemCount(1));
 
         onView(withContentDescription("listOfFavourites")).perform(actionOnItemAtPosition(0, click()));
 
         onView(withId(R.id.nameText)).check(matches(withText("Caroline")));
 
-
     }
-
 
 }
